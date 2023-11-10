@@ -1,0 +1,52 @@
+.card{
+    background-color:aliceblue;
+    box-shadow: 2px 0px 20px 0px rgb(212, 234, 242);
+    padding:20px;
+    margin:20px;
+    text-align: center;
+}
+.space-between{
+    display:flex;
+    justify-content: space-between;
+}
+@media(min-width:580px){
+    .card{
+        display:flex;
+        text-align:left;
+        justify-content: space-between;
+    }
+    .card-profile1{
+        width:30%;
+    }
+    .space-between{
+        flex-direction:column;
+    }
+}
+.card.div{
+    margin:15px;
+}
+h3{
+    color:blue;
+}
+.profile{
+    width:30%;
+    height:30%;
+}
+.card:hover{
+    transform: scale(1.02);
+}
+li{
+    list-style-type: none;
+}
+form{
+    background-color:white;
+    display:flex;
+    flex-direction:column;
+    padding:10px;
+    border-radius:10px;
+}
+label{
+    font-weight: bold;
+    margin-bottom:10px;
+    margin-top:10px;
+}
