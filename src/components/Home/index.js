@@ -301,7 +301,7 @@ updateAvailable=async (event)=>{
         lastName,
         email,
         avatar,
-        domainValue,error
+        domainValue,error,genderValue
         }=this.state
         
         return <div className='background'>
@@ -319,10 +319,13 @@ updateAvailable=async (event)=>{
                         {avatar===''&&<p style={{color:'red'}}>{error}</p>}       
                         <label htmlFor='frn'>First Name </label>
                         <input id='frn' type='text' value={firstName} onChange={this.updateFirstName}/>
+                        {firstName===''&&<p style={{color:'red'}}>{error}</p>}
                         <label htmlFor='lsn'>Last Name</label>
                         <input id='lsn' value={lastName} type='text' onChange={this.updateLastName}/>
+                        {lastName===''&&<p style={{color:'red'}}>{error}</p>}
                         <label htmlFor='email'>Email</label>
                         <input id='email' value={email} type='text' onChange={this.updateEmail}/>
+                        {email===''&&<p style={{color:'red'}}>{error}</p>}
                         <label htmlFor='gender'>Gender</label>
                         <div>
                             <input name='gender' id='male' type='radio' value='Male' onChange={this.updateGenderValue}/>
@@ -332,8 +335,10 @@ updateAvailable=async (event)=>{
                             <input name='gender' id='agender' type='radio' value='Agender' onChange={this.updateGenderValue}/>
                             <label htmlFor='agender'>Agender</label>
                         </div>
+                        {genderValue===''&&<p style={{color:'red'}}>{error}</p>}
                         <label htmlFor='domain'>Domain</label>
                         <input id='domain' value={domainValue} type='text' onChange={this.updateDomainValue}/>
+                        {domainValue===''&&<p style={{color:'red'}}>{error}</p>}
                         <div>
                             <input type='checkbox' id='available' onChange={this.updateAvailableValue} />
                             <label htmlFor='available'>Availability</label>
