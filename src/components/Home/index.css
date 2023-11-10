@@ -1,6 +1,5 @@
 .background{
     background-color: palevioletred;
-    padding:10px;
     min-height:100vh;
 }
 .pagination-buttons{
@@ -33,7 +32,7 @@
 }
 .logo{
     width:20%;
-    height:20%;
+    height:5vh;
 }
 .align-center{
     display:flex;
@@ -56,4 +55,50 @@ margin-top:20px;
   input{
     padding:5px;
     font-size:20px;
+  }
+  .navbar{
+    background-color:black;
+    position:fixed;
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    align-items:Center;
+    width:100vw;
+    height:10vh;
+  }
+  ul{
+    margin-left:-30px;
+  }
+  
+  .column{
+    display:flex;
+    flex-direction:column;
+  }
+  .body-section{
+    padding:11vh 10px 10px 10px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  .filterBoard{
+    margin-right: 15px;
+    height:100vh;
+    
+  }
+ 
+  @media(min-width:700px){
+    .body-section{
+      flex-direction:row;
+      align-items:flex-start
+    }
+    .userCards{
+      margin-left:33vw;
+    }
+    .filterBoard{
+      background-color: white;
+    position:fixed;
+    left:0;
+    width:30vw;
+  
+    }
   }

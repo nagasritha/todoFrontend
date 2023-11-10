@@ -4,6 +4,7 @@
     padding:20px;
     margin:20px;
     text-align: center;
+    overflow-x:auto;
 }
 .space-between{
     display:flex;
@@ -49,4 +50,10 @@ label{
     font-weight: bold;
     margin-bottom:10px;
     margin-top:10px;
+}
+.functions{
+    background-color:transparent;
+    cursor:pointer;
+    border-width:0px;
+
 }

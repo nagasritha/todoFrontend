@@ -70,9 +70,9 @@ class UserDetails extends Component{
     event.preventDefault()
     const {id,firstName,lastName,email,domain,available,gender,avatar}=this.state
     const userDetails={
-        firstName,lastName,avatar,email,gender,domain,available}
+        first_name:firstName,last_name:lastName,avatar,email,gender,domain,available}
     console.log(userDetails)
-    const url=`https://todolist-backend-production-6c98.up.railway.app/users/${id}`
+    const url=`https://todolist-backend-production-39bf.up.railway.app/users/${id}`
     
    await fetch(url, {
         method: 'PUT',
@@ -103,9 +103,9 @@ class UserDetails extends Component{
                     <p><b>Status: </b>{text}</p>
                 </div>
                 <div className='space-between'>
-                    <button type='button' onClick={deleteCard}><AiFillDelete size={50} color='red'/></button>
+                    <button type='button' onClick={deleteCard} className='functions'><AiFillDelete size={50} color='red'/></button>
                     <Popup trigger={
-                        <button type='button'><AiFillEdit size={50} color='blue'/></button>
+                        <button type='button' className='functions'><AiFillEdit size={50} color='blue'/></button>
                     } modal>
                        {close=>{
                         return <form onSubmit={this.save}>
