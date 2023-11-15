@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import {Link} from 'react-router-dom'
 import {CirclesWithBar} from 'react-loader-spinner'
 import {TbFilterCheck} from 'react-icons/tb'
 import { AiOutlineUserAdd } from 'react-icons/ai'
@@ -24,7 +25,6 @@ class Home extends Component{
     availableValue:0,
     }
 
-    
     componentDidMount(){
         this.getData()
     }
@@ -51,12 +51,12 @@ class Home extends Component{
         this.setState({status:'loading'})
         let url=null
         if (searchText!==''){
-         url=`https://todolist-backend-production-39bf.up.railway.app/user/${searchText}`
+         url=`https://temp-jfpo.onrender.com/user/${searchText}`
         }else{
-        url=`https://todolist-backend-production-39bf.up.railway.app/users/?domain=${domainValues.join(',')}&gender=${genderValues.join(",")}&available=${available}&limit=20&offset=${offset}`
+        url=`https://temp-jfpo.onrender.com/users/?domain=${domainValues.join(',')}&gender=${genderValues.join(",")}&available=${available}&limit=20&offset=${offset}` 
         }
-        console.log(url)
         const fetchData=await fetch(url)
+        console.log(fetchData)
         if(fetchData.ok){
             const data=await fetchData.json()
 
@@ -123,7 +123,7 @@ class Home extends Component{
    }
 
     fetch=async (offset)=>{
-        const url=`https://todolist-backend-production-39bf.up.railway.app/users/?limit=20&offset=${offset}`
+        const url=`https://temp-jfpo.onrender.com/users/?limit=20&offset=${offset}`
         const response=await fetch(url);
         const data=await (response.json())
         console.log(data.length)
@@ -206,7 +206,7 @@ class Home extends Component{
     }
 
     deleteUser=async (id)=>{
-        const url=`https://todolist-backend-production-6c98.up.railway.app/delete/${id}`
+        const url=`https://backrnd.onrender.com/delete/${id}`
         const data=await fetch(url, {
             method: 'DELETE',
         })
@@ -283,7 +283,7 @@ updateAvailable=async (event)=>{
                 available:availableValue,
                 avatar:avatar,
             }
-            const url='https://todolist-backend-production-39bf.up.railway.app/todoUsers'
+            const url='https://temp-jfpo.onrender.com/todoUsers'
             const response=await fetch(url, {
                 method: 'POST',
                 headers: {
@@ -307,7 +307,9 @@ updateAvailable=async (event)=>{
         return <div className='background'>
             <nav className='navbar'>
                 <img src='https://res.cloudinary.com/dkredoejm/image/upload/v1699461733/todo_pegzlx.png' alt='logo' className='logo'/>
-                <Popup trigger={
+                <div className='group'>
+                   <Link to='/group'><h1 className='link'>Your Group</h1></Link>
+                   <Popup trigger={
                         <button type='button' className='functions'><AiOutlineUserAdd size={50} color='blue'/></button>
                     } modal>
                        {close=>{
@@ -350,6 +352,7 @@ updateAvailable=async (event)=>{
                         </form>
                        }}
                     </Popup>
+                </div>
             </nav>
            <div className='body-section'>
            <div className='filterBoard'>

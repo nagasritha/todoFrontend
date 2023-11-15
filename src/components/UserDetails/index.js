@@ -1,5 +1,5 @@
 import {Component} from 'react'
-import {AiFillDelete,AiFillEdit} from 'react-icons/ai'
+import {AiFillDelete,AiFillEdit,AiOutlinePlus} from 'react-icons/ai'
 import Popup from 'reactjs-popup'
 import './index.css'
 
@@ -72,7 +72,7 @@ class UserDetails extends Component{
     const userDetails={
         first_name:firstName,last_name:lastName,avatar,email,gender,domain,available}
     console.log(userDetails)
-    const url=`https://todolist-backend-production-39bf.up.railway.app/users/${id}`
+    const url=`https://temp-jfpo.onrender.com/users/${id}`
     
    await fetch(url, {
         method: 'PUT',
@@ -82,6 +82,30 @@ class UserDetails extends Component{
         body: JSON.stringify(userDetails),
       });
     
+    }
+
+    addData=async ()=>{
+        const {firstName,lastName,gender,email,avatar,domain,available}=this.state
+        const user={
+            "first_name":firstName,
+            "last_name":lastName,
+            "gender":gender,
+            "email":email,
+            "avatar":avatar,
+            "domain":domain,
+            "available":available
+        }
+        const url="https://temp-jfpo.onrender.com/usersGroup"
+        const options={
+            method:"POST",
+            headers:{
+                "Content-Type":'application/json'
+            },
+            body:JSON.stringify(user)
+        }
+        const details=await fetch(url,options)
+        const responseData=await details.json()
+        console.log(responseData)
     }
    
     render() {
@@ -104,6 +128,7 @@ class UserDetails extends Component{
                 </div>
                 <div className='space-between'>
                     <button type='button' onClick={deleteCard} className='functions'><AiFillDelete size={50} color='red'/></button>
+                    <div className='functionss'>
                     <Popup trigger={
                         <button type='button' className='functions'><AiFillEdit size={50} color='blue'/></button>
                     } modal>
@@ -141,6 +166,8 @@ class UserDetails extends Component{
                         </form>
                        }}
                     </Popup>
+                    <button type='button' onClick={this.addData} className='functions'><AiOutlinePlus size={30}/></button>
+                    </div>
                 </div>
             </li>
         )

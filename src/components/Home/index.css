@@ -102,3 +102,17 @@ margin-top:20px;
   
     }
   }
+  .link{
+  
+    font-size:20px;
+    font-weight: bold;
+    color:white;
+    margin-right:10px;
+    text-decoration: none;
+  }
+  .group{
+    margin-right:20px;
+    display:flex;
+    align-items:center;
+
+  }

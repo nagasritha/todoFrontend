@@ -55,5 +55,8 @@ label{
     background-color:transparent;
     cursor:pointer;
     border-width:0px;
-
+}
+.functionss{
+    display:flex;
+    align-items: center;
 }
