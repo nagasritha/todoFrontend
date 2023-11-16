@@ -56,14 +56,10 @@ class Home extends Component{
         url=`https://temp-jfpo.onrender.com/users/?domain=${domainValues.join(',')}&gender=${genderValues.join(",")}&available=${available}&limit=20&offset=${offset}` 
         }
         const fetchData=await fetch(url)
-        console.log(fetchData)
         if(fetchData.ok){
             const data=await fetchData.json()
-
-            if(data.length!==0){
-                let updatedData=null
-                console.log(data.length, typeof data)
-              if (data.length!==undefined){
+            let updatedData=null
+            if (data.length!==0){
                  updatedData=data.map(item=>({
                     id:item.id,
                     firstName:item.first_name,
@@ -74,23 +70,12 @@ class Home extends Component{
                     domain:item.domain,
                     available:item.available
                 }))
-              }else{
-                 updatedData={
-                    id:data.id,
-                    firstName:data.first_name,
-                    lastName:data.last_name,
-                    email:data.email,
-                    avatar:data.avatar,
-                    gender:data.gender,
-                    domain:data.domain,
-                    available:data.available
-                }
-              }
-            this.setState({dataList : updatedData,status:'success'})}
-            else{
-                this.setState({status:'empty'})
+                this.setState({dataList : updatedData,status:'success'})
             }
-    }else{
+              else{
+                this.setState({status:'empty'})
+              }
+        }else{
         this.setState({status:'failure'})
     }
     }
@@ -313,7 +298,7 @@ updateAvailable=async (event)=>{
                         <button type='button' className='functions'><AiOutlineUserAdd size={50} color='blue'/></button>
                     } modal>
                        {close=>{
-                        return <form onSubmit={this.save}>
+                        return <form onSubmit={this.save} id='User'>
                         <label htmlFor='avatar'>
                             <img src={avatar} alt={firstName} className='profile'/>
                             <p>Avatar</p></label>
@@ -356,7 +341,7 @@ updateAvailable=async (event)=>{
             </nav>
            <div className='body-section'>
            <div className='filterBoard'>
-            <form>     
+            <form id='filterSection'>     
                 <h1><TbFilterCheck size={30}/>Filters</h1>
                     <h1>Category</h1> 
                     <div>
@@ -376,7 +361,7 @@ updateAvailable=async (event)=>{
                     <label htmlFor='Management'>Management</label>
                     </div>
                     <div>
-                    <input type='checkbox' id='ui' value="UI Designing" onChange={this.updateDomins} selected='true'/>
+                    <input type='checkbox' id='ui' value="UI Designing" onChange={this.updateDomins} selected/>
                     <label htmlFor='ui'>UI Designing</label>
                     </div>
                     <div>
@@ -390,7 +375,7 @@ updateAvailable=async (event)=>{
                     <label htmlFor='Male'>Male</label>
                     </div>
                     <div>
-                    <input type='checkbox' id='Female' value="Female" onChange={this.updateGender} selected='true'/>
+                    <input type='checkbox' id='Female' value="Female" onChange={this.updateGender} selected/>
                     <label htmlFor='Female'>Female</label>
                     </div>
                     <div>

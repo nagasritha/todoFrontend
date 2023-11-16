@@ -112,7 +112,7 @@ class UserDetails extends Component{
         const {itemDetails,deleteUser}=this.props
         const {id}=itemDetails
         const {firstName,lastName,gender,email,avatar,domain,available}=this.state
-        const text=available?'Available':'Not-Available'
+        const text=available===1?'Available':'Not-Available'
         const deleteCard=()=>deleteUser(id)
         return (
             <li className='card'>
@@ -133,7 +133,7 @@ class UserDetails extends Component{
                         <button type='button' className='functions'><AiFillEdit size={50} color='blue'/></button>
                     } modal>
                        {close=>{
-                        return <form onSubmit={this.save}>
+                        return <form onSubmit={this.save} id='UserDataSection'>
                         <label htmlFor='avatar'>
                             <img src={avatar} alt={firstName} className='profile'/>
                             <p>Avatar</p></label>
